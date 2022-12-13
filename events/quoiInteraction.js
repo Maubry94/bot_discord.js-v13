@@ -4,16 +4,16 @@ module.exports = {
 		if (interaction.author.bot) return;
 
 		let message = interaction.content;
-		const words = ["Quoi", "quoi", "QUOI", "Oui", "oui", "OUI", "Ouais", "ouais", "OUAIS", "Non", "non", "NON"];
+		const words = ["quoi", "oui", "ouais", "non", 'qui'];
 		const ends = ["", ".", " !", " ?", "...", " ???", " !!!", " ??!", " ?!!"];
 		let isFound = false;
 		let word;
 
 		for (let i = 0; i < words.length; i++) {
 			for (let j = 0; j < ends.length; j++) {
-				if (message.indexOf(words[i] + ends[j], message.length - (words[i].length + ends[j])) >= 0) {
+				if (message.toLowerCase().indexOf(words[i] + ends[j], message.length - (words[i].length + ends[j])) >= 0) {
 					isFound = true;
-					word = words[i];
+					word = words[i].toLowerCase();
 				}
 			}
 		}
@@ -23,26 +23,20 @@ module.exports = {
 		let replies;
 
 		switch (word) {
-			case "Quoi":
 			case "quoi":
-			case "QUOI":
-				replies = ["feur", "driceps", "drilatère", "shi"];
+				replies = ["feur 🤣 🤣 🤣", "driceps 🤣 🤣 🤣", "drilatère 🤣 🤣 🤣", "shi 🤣 🤣 🤣"];
 				break;
-			case "Oui":
 			case "oui":
-			case "OUI":
-				replies = ["stiti", "ghours"];
+				replies = ["stiti 🤣 🤣 🤣", "ghours 🤣 🤣 🤣"];
 				break;
-			case "Ouais":
 			case "ouais":
-			case "OUAIS":
-				replies = ["stern"];
+				replies = ["stern 🤣 🤣 🤣"];
 				break;
-			case "Non":
 			case "non":
-			case "NON":
-				replies = ["bril"];
+				replies = ["bril 🤣 🤣 🤣"];
 				break;
+			case "qui":
+				replies = ["quette 🤣 🤣 🤣"];
 
 			default:
 				break;
@@ -53,7 +47,7 @@ module.exports = {
 		} catch (error) {
 			console.log(`${error}`);
 			await interaction.reply({
-				content: `Une erreur est survenue lors de la réponse.`,
+				content: `J'ai bugué je pense... 🫤`,
 				ephmeral: true,
 			});
 		}
