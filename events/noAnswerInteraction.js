@@ -14,7 +14,7 @@ module.exports = {
 
 		if(message.includes(mention)) {
 			const filter = m => m.content;
-			const collector = interaction.channel.createMessageCollector({ filter, time: 7200000 });
+			const collector = interaction.channel.createMessageCollector({ filter, time: 7200000, max: 1 });
 
 			try {
 				// collector.on('collect', m => {
