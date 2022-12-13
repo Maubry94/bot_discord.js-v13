@@ -1,0 +1,14 @@
+{
+	"clientId": "client id",
+	"token": "token",
+	"prefix": "prefix",
+	"guildId": "guild id",
+	"channels": {
+		"channel": "channel id"
+	},
+	"embeds": {
+		"colors": {
+			"color": "color hex"
+		}
+	}
+}
