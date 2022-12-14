@@ -3,25 +3,23 @@ module.exports = {
 	async execute(interaction, client) {
 		if (interaction.author.bot) return;
 
-		let message = interaction.content;
-		let mention = "<@&744346177658683403>";
-		let replies = [
+		const message = interaction.content;
+		const roleMention = "<@&744346177658683403>";
+		const authorId = interaction.author.id;
+		const replies = [
 			"C'est pas humain de se prendre des vents comme ça. Ça va faire 2 heures là quand même. 😔",
 			"Bah je crois que ça veut pas hein...",
 			"https://tenor.com/view/wind-windy-gif-14972041",
-			"Non dsl, je joue qu'avec des fort 😜. Mais au moins moi je réponds. 😉"
+			"Non dsl, je joue qu'avec des forts 😜. Mais au moins moi je réponds. 😉"
 		];
 
-		if(message.includes(mention)) {
-			const filter = m => m.content;
-			const collector = interaction.channel.createMessageCollector({ filter, time: 7200000, max: 1 });
-
+		if(message.includes(roleMention)) {
+			const filter = m => m.author.id !== authorId
+			const hours = 1000 * 60 * 60
+			
 			try {
-				// collector.on('collect', m => {
-				// 	console.log(`Collected ${m.content}`);
-				// });
-
-				collector.on('end', collected => {
+				interaction.channel.awaitMessages({ filter, time: hours * 2 , max: 1 })
+				.then((collected) => {
 					if(collected.size > 0) return;
 					return interaction.reply(replies[Math.floor(Math.random() * replies.length)]);
 				});
