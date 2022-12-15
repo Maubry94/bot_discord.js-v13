@@ -16,7 +16,7 @@ module.exports = {
 		if (interaction.channel.id != channels.quote) {
 			emb = new MessageEmbed().setColor(embeds.colors.red).setDescription(`Cette commande doit être utilisée dans <#${channels.quote}>`);
 		} else {
-			emb = new MessageEmbed().setColor(embeds.colors.yellow).setTitle(quote).setDescription(author).setTimestamp();
+			emb = new MessageEmbed().setColor(embeds.colors.yellow).setTitle(`"${quote}"`).setDescription(author).setTimestamp();
 		}
 
 		await interaction.reply({ embeds: [emb] });
