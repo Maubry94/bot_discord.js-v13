@@ -47,7 +47,9 @@ module.exports = {
 				.setDescription(
 					`Utiliser \`${prefix}help\` suivi du nom de la commande pour obtenir plus d'informations. Par exemple : \`${prefix}help ball\`.`
 				)
-				.setColor(embeds.colors.yellow);
+				.setFooter({ text: `Demandé par ${interaction.member.user.tag}`})
+				.setColor(embeds.colors.yellow)
+				.setTimestamp();
 
 			return interaction.reply({ embeds: [emb] });
 		} else {
@@ -60,10 +62,12 @@ module.exports = {
 				return interaction.reply({ embeds: [emb] });
 			}
 
+			console.log(command.name);
+
 			const emb = new MessageEmbed()
-				.setTitle("Commande :", command.name ? `\`${command.name}\`` : "Pas de nom :")
-				.addFields("Description :", command.description ? command.description : "Pas de description.")
-				.addFields("Utilisation :", command.usage ? `\`${prefix}${command.name} ${command.usage}\`` : `\`${prefix}${command.name}\``)
+				.setTitle(`Commande : ${command.name ? command.name : "pas de nom"}`)
+				.addFields({ name: 'Description :', value: command.description ? command.description : "Pas de description." })
+				.addFields({ name : "Utilisation :", value: command.usage ? `\`${prefix}${command.name} ${command.usage}\`` : `\`${prefix}${command.name}\``})
 				.setColor(embeds.colors.yellow);
 
 			return interaction.reply({ embeds: [emb] });

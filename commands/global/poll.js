@@ -13,7 +13,7 @@ module.exports = {
 
 		if (!question) return interaction.reply({ embeds: [client.errorEmbed(`Vous devez poser une question pour le sondage.`)] });
 
-		let options = interaction.options.getString("options").split(" | ");
+		let options = interaction.options.getString("options").split(",");
 
 		if (options.length < 2) return interaction.reply({ embeds: [client.errorEmbed(`Le sondage doit comporter au deux un choix.`)] });
 
@@ -25,7 +25,7 @@ module.exports = {
 			.setColor(embeds.colors.yellow)
 			.setTitle(question)
 			.setDescription(options.map((choice, i) => `${reactions[i]} ${choice}`).join("\n\n"))
-			.addFields("Auteur", `**\`${interaction.member.user.tag}\`**`, true)
+			.setFooter({ text: `Posé par ${interaction.member.user.tag}`})
 			.setTimestamp();
 
 		await interaction.reply(`Nouveau sondage !`);
@@ -40,5 +40,5 @@ module.exports = {
 	},
 	name: "poll",
 	description: "Crée un sondage.",
-	usage: "[question] [option 1 | option 2]",
+	usage: "[question] [option 1,option 2]",
 };
