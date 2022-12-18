@@ -62,8 +62,8 @@ module.exports = {
 
 			const emb = new MessageEmbed()
 				.setTitle("Commande :", command.name ? `\`${command.name}\`` : "Pas de nom :")
-				.addField("Description :", command.description ? command.description : "Pas de description.")
-				.addField("Utilisation :", command.usage ? `\`${prefix}${command.name} ${command.usage}\`` : `\`${prefix}${command.name}\``)
+				.addFields("Description :", command.description ? command.description : "Pas de description.")
+				.addFields("Utilisation :", command.usage ? `\`${prefix}${command.name} ${command.usage}\`` : `\`${prefix}${command.name}\``)
 				.setColor(embeds.colors.yellow);
 
 			return interaction.reply({ embeds: [emb] });

@@ -25,7 +25,7 @@ module.exports = {
 			.setColor(embeds.colors.yellow)
 			.setTitle(question)
 			.setDescription(options.map((choice, i) => `${reactions[i]} ${choice}`).join("\n\n"))
-			.addField("Auteur", `**\`${interaction.member.user.tag}\`**`, true)
+			.addFields("Auteur", `**\`${interaction.member.user.tag}\`**`, true)
 			.setTimestamp();
 
 		await interaction.reply(`Nouveau sondage !`);

@@ -18,7 +18,7 @@ module.exports = {
 			.setColor(embeds.colors.yellow)
 			.setTitle(question)
 			.setDescription(replies[Math.floor(Math.random() * replies.length)])
-			.addField("Auteur", `**\`${interaction.member.user.tag}\`**`, true);
+			.addFields("Auteur", `**\`${interaction.member.user.tag}\`**`, true);
 		await interaction.reply({ embeds: [emb] });
 	},
 	name: "ball",
